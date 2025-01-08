@@ -1,0 +1,41 @@
+version: '3'
+services: 
+  consul-server:
+    image: hashicorp/consul:1.11.2
+    ports:
+      - 8500:8500
+  
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile.app
+    volumes:
+      - ./app.mjs:/app/app.mjs
+    environment:
+      SERVICE_TYPE: api-service
+      ADDRESS: app
+    depends_on:
+      - consul-server
+
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile.app
+    volumes:
+      - ./app.mjs:/app/app.mjs
+    environment:
+      SERVICE_TYPE: web-service
+      ADDRESS: web
+    depends_on:
+      - consul-server
+  
+  load-balancer:
+    build:
+      context: .
+      dockerfile: Dockerfile.balancer
+    volumes:
+     - ./loadBalancer.mjs:/app/loadBalancer.mjs
+    ports:
+      - 8080:8080
+    depends_on:
+      - consul-server

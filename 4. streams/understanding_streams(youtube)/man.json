@@ -1,0 +1,10 @@
+{
+  "name": "nick",
+  "age": 24,
+  "skills": {
+    "smart": true,
+    "beautiful": true,
+    "strong": true,
+    "generous": false
+  }
+}

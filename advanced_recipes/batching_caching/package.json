@@ -1,0 +1,19 @@
+{
+  "name": "batching_caching",
+  "version": "1.0.0",
+  "description": "",
+  "main": "totalSales.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "level": "^8.0.0",
+    "subleveldown": "^6.0.1",
+    "nanoid": "^5.0.2",
+    "superagent": "^8.1.2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

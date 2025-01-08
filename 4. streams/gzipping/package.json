@@ -1,0 +1,13 @@
+{
+  "name": "gzipping",
+  "version": "1.0.0",
+  "description": "",
+  "main": "buffered.api.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {},
+  "author": "",
+  "license": "ISC"
+}

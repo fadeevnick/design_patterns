@@ -1,0 +1,8 @@
+{
+  "type": "module",
+  "dependencies": {
+    "consul": "1.2.0",
+    "nanoid": "5.0.4",
+    "http-proxy": "1.18.1"
+  }
+}

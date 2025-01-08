@@ -1,0 +1,8 @@
+{
+  "type": "module",
+  "dependencies": {
+    "mkdirp": "^0.5.5",
+    "slug": "^1.1.0",
+    "superagent": "^5.2.2"
+  }
+}
