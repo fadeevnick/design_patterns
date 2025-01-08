@@ -1,9 +1,12 @@
+import { Transform } from "stream";
+
 export class ParallelStream extends Transform {
   constructor(userTransform, opt) {
     super({ objectMode: true, ...opt });
+
+    this.userTransform = userTransform;
     this.running = 0;
-    this.noMoreIncomingData = false;
-    this.cb = null;
+    this.terminateCb = null;
   }
 
   _transform(chunk, encoding, cb) {
@@ -11,15 +14,18 @@ export class ParallelStream extends Transform {
     this.userTransform(chunk, encoding, this.push.bind(this), () => {
       this.running--;
 
-      if (this.noMoreIncomingData && this.running === 0) {
-        this.cb();
+      if (this.terminateCb && this.running === 0) {
+        this.terminateCb();
       }
     });
     cb();
   }
 
   _flush(cb) {
-    this.noMoreIncomingData = true;
-    this.cb = cb;
+    if (this.running > 0) {
+      this.terminateCb = cb;
+    } else {
+      cb();
+    }
   }
 }

@@ -12,6 +12,7 @@ pipeline(
       await superagent.head(url, { timeout: 5 * 1000 });
       push(`${url} is up\n`);
     } catch (err) {
+      console.log("err", err);
       push(`${url} is down\n`);
     }
     done();
